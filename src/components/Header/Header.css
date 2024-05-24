@@ -1,0 +1,9 @@
+.contain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* .close-btn {
+  margin-top: 20px;
+} */
