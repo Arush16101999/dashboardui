@@ -5,6 +5,9 @@ import TaskTable from "../../components/Table";
 import Paginations from "../../components/Paginations";
 import Header from "../../components/Header";
 import Navigation from "../../components/Navigation";
+import List from "../../components/List";
+import Activity from "../../components/Activity";
+import Chart from "../../components/Chart";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -21,20 +24,21 @@ const Dashboard = () => {
       );
       if (data) {
         console.log(data);
-        setTasks(data.data);
+        const limitedTasks = data.data.slice(0, 7);
+        setTasks(limitedTasks);
       }
     } catch (err) {
       console.log(err);
     }
   };
 
-  fetch("https://6363c8f68a3337d9a2e7d805.mockapi.io/api/to-do").then(
-    (response) => {
-      response.json().then((data) => {
-        console.log(data);
-      });
-    }
-  );
+  // fetch("https://6363c8f68a3337d9a2e7d805.mockapi.io/api/to-do").then(
+  //   (response) => {
+  //     response.json().then((data) => {
+  //       console.log(data);
+  //     });
+  //   }
+  // );
 
   const filteredTasks = tasks.filter((track) => {
     return track.priority.toLowerCase().includes(filterStatus.toLowerCase());
@@ -44,8 +48,11 @@ const Dashboard = () => {
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navigation />
-          {/* <Header /> */}
+          {/* <Navigation /> */}
+          <Activity />
+          <List />
+          <Chart />
+          <Header />
           {/* <Paginations /> */}
           <Navbar.Brand>
             {/* {tasks.map((head) => {
@@ -63,7 +70,7 @@ const Dashboard = () => {
         </Row>
         <br />
         <Row>
-          <TaskTable filteredTasks={filteredTasks} />
+          <TaskTable filteredTasks={tasks} />
         </Row>
       </Container>
     </div>
