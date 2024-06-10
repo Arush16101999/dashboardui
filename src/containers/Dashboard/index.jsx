@@ -11,6 +11,7 @@ import Chart from "../../components/Chart";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
+
   const [filterStatus, setFilterStatus] = useState("");
 
   useEffect(() => {
@@ -23,9 +24,9 @@ const Dashboard = () => {
         "https://6363c8f68a3337d9a2e7d805.mockapi.io/api/to-do"
       );
       if (data) {
-        console.log(data);
-        const limitedTasks = data.data.slice(0, 7);
-        setTasks(limitedTasks);
+        console.log(data.data);
+        // const limitedTasks = data.data.slice(0, 7);
+        setTasks(data.data);
       }
     } catch (err) {
       console.log(err);
@@ -40,20 +41,19 @@ const Dashboard = () => {
   //   }
   // );
 
-  const filteredTasks = tasks.filter((track) => {
-    return track.priority.toLowerCase().includes(filterStatus.toLowerCase());
-  });
+  // const filteredTasks = tasks.filter((track) => {
+  //   return track.priority.toLowerCase().includes(filterStatus.toLowerCase());
+  // });
 
   return (
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           {/* <Navigation /> */}
-          <Activity />
+          {/* <Activity />
           <List />
           <Chart />
-          <Header />
-          {/* <Paginations /> */}
+          <Header /> */}
           <Navbar.Brand>
             {/* {tasks.map((head) => {
               return <h2>{head.name}</h2>;
@@ -70,6 +70,10 @@ const Dashboard = () => {
         </Row>
         <br />
         <Row>
+          {/* {tasks.map((items, index) => (
+            <p key={index}>{items.todo}</p>
+          ))} */}
+
           <TaskTable filteredTasks={tasks} />
         </Row>
       </Container>
