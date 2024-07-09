@@ -49,11 +49,6 @@ const Dashboard = () => {
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          {/* <Navigation /> */}
-          {/* <Activity />
-          <List />
-          <Chart />
-          <Header /> */}
           <Navbar.Brand>
             {/* {tasks.map((head) => {
               return <h2>{head.name}</h2>;
@@ -75,6 +70,11 @@ const Dashboard = () => {
           ))} */}
 
           <TaskTable filteredTasks={tasks} />
+          <Navigation />
+          <Activity />
+          <List />
+          <Chart />
+          <Header />
         </Row>
       </Container>
     </div>

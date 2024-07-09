@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Badge from "react-bootstrap/Badge";
 import Paginations from "../Paginations";
+import { Col, Row } from "react-bootstrap";
 
 const TaskTable = (props) => {
   const { filteredTasks } = props;
@@ -53,11 +54,22 @@ const TaskTable = (props) => {
           ))}
         </tbody>
       </Table>
-      <Paginations
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      <Row>
+        <Col md={4} />
+        <Col md={3}>
+          <Paginations
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </Col>
+      </Row>
+
+      <p>{totalItems}</p>
+      <p>{totalPages}</p>
+      <p>{indexOfLastItem}</p>
+      <p>{indexOfFirstItem}</p>
+      {/* <p>{currentItems}</p> */}
     </div>
   );
 };
